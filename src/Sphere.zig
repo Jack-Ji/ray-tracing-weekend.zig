@@ -10,7 +10,7 @@ radius: f32 = undefined,
 hitable: hitable.Hitable = undefined,
 material: *const material.Material = undefined,
 
-pub fn new(allocator: *std.mem.Allocator, cen: Vec, r: f32, mt: ?*const material.Material) *Sphere {
+pub fn new(allocator: std.mem.Allocator, cen: Vec, r: f32, mt: ?*const material.Material) *Sphere {
     var s = allocator.create(Sphere) catch unreachable;
     s.center = cen;
     s.radius = r;

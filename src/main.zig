@@ -8,7 +8,7 @@ const Sphere = @import("Sphere.zig");
 const material = @import("material.zig");
 const hitable = @import("hitable.zig");
 const utils = @import("utils.zig");
-const randFloat = utils.prng.random.float;
+const randFloat = utils.prng.random().float;
 
 fn color(ray: Ray, world: *hitable.Hitable, depth: i32) Vec {
     var record = world.hit(ray, 0.001, std.math.f32_max);

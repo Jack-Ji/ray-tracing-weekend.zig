@@ -7,9 +7,9 @@ pub fn randomInUnitSphere() Vec {
     var p: Vec = undefined;
     while (true) {
         p = Vec.new(
-            prng.random.float(f32),
-            prng.random.float(f32),
-            prng.random.float(f32),
+            prng.random().float(f32),
+            prng.random().float(f32),
+            prng.random().float(f32),
         ).mul(2.0).sub(Vec.ones());
         if (p.squaredLength() < 1.0) break;
     }
@@ -20,8 +20,8 @@ pub fn randomInUnitDisk() Vec {
     var p: Vec = undefined;
     while (true) {
         p = Vec.new(
-            prng.random.float(f32),
-            prng.random.float(f32),
+            prng.random().float(f32),
+            prng.random().float(f32),
             0,
         ).mul(2.0).sub(Vec.new(1, 1, 0));
         if (p.dot(p) < 1.0) break;

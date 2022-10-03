@@ -11,7 +11,7 @@ albedo: Vec = undefined,
 fuzz: f32 = undefined,
 material: material.Material = undefined,
 
-pub fn new(allocator: *std.mem.Allocator, a: Vec, fuzz: f32) *Self {
+pub fn new(allocator: std.mem.Allocator, a: Vec, fuzz: f32) *Self {
     var mt = allocator.create(Self) catch unreachable;
     mt.albedo = a;
     mt.fuzz = if (fuzz < 1) fuzz else 1;
