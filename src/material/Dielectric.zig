@@ -10,7 +10,7 @@ const Self = @This();
 ref_idx: f32 = undefined,
 material: material.Material = undefined,
 
-pub fn new(allocator: *std.mem.Allocator, ref_idx: f32) *Self {
+pub fn new(allocator: std.mem.Allocator, ref_idx: f32) *Self {
     var mt = allocator.create(Self) catch unreachable;
     mt.ref_idx = ref_idx;
     mt.material = .{
@@ -45,7 +45,7 @@ fn scatter(mt: *const material.Material, ray: Ray, record: hitable.HitRecord) ?m
     }
     const retracted = utils.retract(ray.direction(), outward_normal, ni_over_nt);
     if (retracted) |rt| {
-        if (utils.prng.random.float(f32) < self.schlick(cosine)) {
+        if (utils.prng.random().float(f32) < self.schlick(cosine)) {
             return material.ScatteredRay{
                 .ray = Ray.new(record.p, rt),
                 .attenuation = attenuation,

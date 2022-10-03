@@ -10,7 +10,7 @@ const Self = @This();
 albedo: Vec = undefined,
 material: material.Material = undefined,
 
-pub fn new(allocator: *std.mem.Allocator, a: Vec) *Self {
+pub fn new(allocator: std.mem.Allocator, a: Vec) *Self {
     var mt = allocator.create(Self) catch unreachable;
     mt.albedo = a;
     mt.material = .{
